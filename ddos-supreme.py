@@ -105,12 +105,48 @@ def add_useragent():
 def add_bots():
     """Return a list of bot search engine URLs."""
     return [
+        # Legitimate Search Engine Bots
         "http://www.bing.com/search?q=%40&count=50&first=0",
         "http://www.google.com/search?hl=en&num=100&q=intext%3A%40&ie=utf-8",
         "https://www.google.com/",
         "https://www.bing.com/",
         "https://www.yahoo.com/",
-        "https://www.duckduckgo.com/"
+        "https://www.duckduckgo.com/",
+        
+        # Malicious Botnets & Crawlers
+        "https://www.shodan.io/robots.txt",  # Shodan Scanner
+        "https://www.zoomeye.org/faq",  # ZoomEye (Chinese Recon Scanner)
+        "https://www.binaryedge.io/",  # BinaryEdge (Recon & Intelligence)
+        "https://fofa.info/",  # FOFA Scanner (Chinese OSINT)
+        "https://www.onyphe.io/",  # Onyphe (Cyber Threat Intelligence)
+        
+        # DDoS & Malicious Botnets
+        "https://en.wikipedia.org/wiki/Mirai_(malware)",  # Mirai Botnet
+        "https://en.wikipedia.org/wiki/Mozi_botnet",  # Mozi P2P Botnet
+        "https://en.wikipedia.org/wiki/IoT_Reaper",  # Reaper (Advanced Mirai)
+        "https://en.wikipedia.org/wiki/Mercedes_DDoS",  # Meris Botnet
+        "https://www.cloudflare.com/learning/ddos/glossary/mylobot/",  # MyloBot
+        "https://www.kaspersky.com/blog/malicious-socks5-proxies/36190/",  # SOCKS Proxy Botnets
+        
+        # Vulnerability Scanners & Exploitation Frameworks
+        "https://nmap.org/nsedoc/",  # Nmap NSE Scripts
+        "https://www.metasploit.com/",  # Metasploit Exploitation Framework
+        "https://cirt.net/nikto2",  # Nikto Web Scanner
+        "https://wapiti.sourceforge.io/",  # Wapiti Web Vulnerability Scanner
+        "https://sqlmap.org/",  # SQL Injection Scanner
+        "https://github.com/commixproject/commix",  # Command Injection Scanner
+        
+        # Brute Force & Credential Stuffing Bots
+        "https://github.com/vanhauser-thc/thc-hydra",  # Hydra (Brute Forcer)
+        "https://github.com/galkan/crowbar",  # Crowbar (SSH & RDP Brute Force)
+        "https://github.com/lanjelot/patator",  # Patator Brute Force Suite
+        
+        # DDoS Attack Tools
+        "https://en.wikipedia.org/wiki/LOIC",  # LOIC (Low Orbit Ion Cannon)
+        "https://en.wikipedia.org/wiki/HOIC",  # HOIC (High Orbit Ion Cannon)
+        "https://github.com/gkbrk/slowloris",  # Slowloris HTTP DoS Tool
+        "https://github.com/grafov/hulk",  # HULK (HTTP Unbearable Load King)
+        "https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project",  # DirBuster (Brute Force Directories)
     ]
 
 class Pyslow:
